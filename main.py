@@ -45,7 +45,8 @@ class Application:
         #Label/Input prefix
         self.lbPrefix = Label(self.container_prefix, text="Prefix:", width=5, anchor=S)
         self.lbPrefix.pack(side=LEFT)
-        self.txtPrefix = Entry(self.container_prefix, width=10, fg=self.colorFont)
+        self.varPrefix = StringVar()
+        self.txtPrefix = Entry(self.container_prefix, width=10, fg=self.colorFont, textvariable=self.varPrefix)
         self.txtPrefix.pack(side=LEFT)
 
         # Label/Input tamanho prefix
@@ -64,6 +65,7 @@ class Application:
 
         # Binding para executar a função que gera a quantidade de caracter do prefixo digitado
         self.txtPrefix.bind("<FocusOut>", self.PrefixSize)
+        self.txtPrefix.bind("<KeyRelease>", self.CapsLock)
 
     # Janela about
     @staticmethod
@@ -114,9 +116,13 @@ class Application:
             tkmsg.showerror(title="Erro", message="Ocorreu um erro ao tentar renomear os arquivos.")
 
     # Gera a quantidade de caracter do prefixo ao ocorrer o evento FocusOut
-    def PrefixSize(self, *args):
+    def PrefixSize(self, event):
         self.txtTamanhoPrefix.delete(0, END)
         self.txtTamanhoPrefix.insert(0, len(self.txtPrefix.get()))
+
+    # Caps
+    def CapsLock(self, event):
+        self.varPrefix.set(self.varPrefix.get().upper())
 
     # Fechar o aplicativo
     @staticmethod
