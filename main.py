@@ -62,6 +62,9 @@ class Application:
         self.btnProcess = Button(self.container_button, text="Process", width=10, command=self.IniProcess)
         self.btnProcess.pack()
 
+        # Binding para executar a função que gera a quantidade de caracter do prefixo digitado
+        self.txtPrefix.bind("<FocusOut>", self.PrefixSize)
+
     # Janela about
     @staticmethod
     def About():
@@ -109,6 +112,11 @@ class Application:
             tkmsg.showinfo(title="Info", message="Arquivos renomeados com sucesso!")
         else:
             tkmsg.showerror(title="Erro", message="Ocorreu um erro ao tentar renomear os arquivos.")
+
+    # Gera a quantidade de caracter do prefixo ao ocorrer o evento FocusOut
+    def PrefixSize(self, *args):
+        self.txtTamanhoPrefix.delete(0, END)
+        self.txtTamanhoPrefix.insert(0, len(self.txtPrefix.get()))
 
     # Fechar o aplicativo
     @staticmethod
