@@ -1,0 +1,5 @@
+################ RELATÓRIO DE ARQUIVOS PROCESSADOS -  Data: 2018-09-17 ################
+Arquivo original [RHIMP001.txt] renomeado para [SPIMP001.txt]
+Arquivo original [RHIMP002.txt] renomeado para [SPIMP002.txt]
+Arquivo original [RHIMP003.txt] renomeado para [SPIMP003.txt]
+Total de arquivos renomeados: 3
