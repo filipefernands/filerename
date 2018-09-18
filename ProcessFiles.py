@@ -10,7 +10,7 @@ class Files:
 
     def __init__(self, dir_origem, prefix, tam_prefix):
         self.path       = dir_origem
-        self.prefix     = prefix
+        self.prefix     = str(prefix).upper()
         self.tam_prefix = tam_prefix
 
     # Processa os arquivos do diretório informado
